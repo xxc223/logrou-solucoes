@@ -1,5 +1,5 @@
 // Smooth scroll for navigation links
-const navLinks = document.querySelectorAll('.nav-link');
+const navLinks = document.querySelectorAll('.nav__link');
 
 navLinks.forEach(link => {
     link.addEventListener('click', function(e) {
@@ -12,7 +12,7 @@ navLinks.forEach(link => {
             const targetSection = document.getElementById(targetId);
             
             if (targetSection) {
-                const navHeight = document.querySelector('.navbar').offsetHeight;
+                const navHeight = document.querySelector('.nav').offsetHeight;
                 const targetPosition = targetSection.offsetTop - navHeight;
                 
                 window.scrollTo({
@@ -38,9 +38,45 @@ if (navToggle) {
     });
 }
 
-// Fade-in animation on scroll using Intersection Observer
-const fadeElements = document.querySelectorAll('.fade-element');
+// Dropdown menu functionality
+const servicesLink = document.querySelector('a[href="#servicos"]');
+const servicesDropdown = document.getElementById('servicesDropdown');
 
+if (servicesLink && servicesDropdown) {
+    servicesLink.addEventListener('click', function(e) {
+        // Se clicar no link de serviços, alterna o dropdown
+        if (window.innerWidth > 768) {
+            e.preventDefault();
+            servicesDropdown.classList.toggle('active');
+        }
+    });
+    
+    // Mostra dropdown ao passar o mouse (desktop)
+    const servicesItem = servicesLink.parentElement;
+    if (servicesItem) {
+        servicesItem.addEventListener('mouseenter', function() {
+            if (window.innerWidth > 768) {
+                servicesDropdown.classList.add('active');
+            }
+        });
+        
+        servicesItem.addEventListener('mouseleave', function() {
+            if (window.innerWidth > 768) {
+                servicesDropdown.classList.remove('active');
+            }
+        });
+    }
+}
+
+// Fecha dropdown ao clicar fora
+document.addEventListener('click', function(e) {
+    if (servicesDropdown && !e.target.closest('.nav__item--dropdown')) {
+        servicesDropdown.classList.remove('active');
+    }
+});
+
+// Fade-in animation on scroll
+const sections = document.querySelectorAll('.section');
 const fadeObserver = new IntersectionObserver((entries) => {
     entries.forEach(entry => {
         if (entry.isIntersecting) {
@@ -52,70 +88,15 @@ const fadeObserver = new IntersectionObserver((entries) => {
     rootMargin: '0px 0px -50px 0px'
 });
 
-fadeElements.forEach(element => {
-    fadeObserver.observe(element);
+sections.forEach(section => {
+    fadeObserver.observe(section);
 });
 
-// Parallax effect for hero section
+// Active navigation highlighting
 window.addEventListener('scroll', () => {
-    const scrolled = window.pageYOffset;
-    const heroOverlay = document.querySelector('.hero-overlay');
-    
-    if (heroOverlay) {
-        heroOverlay.style.transform = `translateY(${scrolled * 0.5}px)`;
-    }
-});
-
-// Contact form handling
-const contactForm = document.getElementById('contactForm');
-const formMessage = document.getElementById('formMessage');
-
-if (contactForm) {
-    contactForm.addEventListener('submit', function(e) {
-        e.preventDefault();
-        
-        // Get form data
-        const formData = {
-            name: document.getElementById('name').value,
-            email: document.getElementById('email').value,
-            subject: document.getElementById('subject').value,
-            message: document.getElementById('message').value
-        };
-        
-        // Store in memory (no localStorage due to sandbox restrictions)
-        console.log('Form submitted:', formData);
-        
-        // Show success message
-        formMessage.textContent = 'Mensagem enviada com sucesso! Entraremos em contato em breve.';
-        formMessage.className = 'form-message success';
-        
-        // Reset form
-        contactForm.reset();
-        
-        // Hide message after 5 seconds
-        setTimeout(() => {
-            formMessage.style.display = 'none';
-        }, 5000);
-        
-        // Track form submission event
-        trackEvent('Form', 'Submit', 'Contact Form');
-    });
-}
-
-// Analytics event tracking function (placeholder)
-function trackEvent(category, action, label) {
-    // This function is prepared for Google Analytics integration
-    // When you add Google Analytics, uncomment the following line:
-    // gtag('event', action, {'event_category': category, 'event_label': label});
-    console.log(`Event tracked: ${category} - ${action} - ${label}`);
-}
-
-// Active navigation highlighting based on scroll position
-window.addEventListener('scroll', () => {
-    const sections = document.querySelectorAll('section[id]');
     const scrollPosition = window.pageYOffset + 100;
     
-    sections.forEach(section => {
+    document.querySelectorAll('section[id]').forEach(section => {
         const sectionTop = section.offsetTop;
         const sectionHeight = section.offsetHeight;
         const sectionId = section.getAttribute('id');
@@ -127,30 +108,6 @@ window.addEventListener('scroll', () => {
                     link.classList.add('active');
                 }
             });
-        }
-    });
-});
-
-// Add loading animation complete class
-window.addEventListener('load', () => {
-    document.body.classList.add('loaded');
-});
-
-// Smooth scroll for all anchor links
-document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-        const href = this.getAttribute('href');
-        if (href !== '#' && href.length > 1) {
-            e.preventDefault();
-            const target = document.querySelector(href);
-            if (target) {
-                const navHeight = document.querySelector('.navbar').offsetHeight;
-                const targetPosition = target.offsetTop - navHeight;
-                window.scrollTo({
-                    top: targetPosition,
-                    behavior: 'smooth'
-                });
-            }
         }
     });
 });
