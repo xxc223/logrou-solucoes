@@ -12,6 +12,9 @@ navLinks.forEach(link => {
             const targetSection = document.getElementById(targetId);
             
             if (targetSection) {
+                // FORÇAR a seção a ficar visível ANTES de rolar
+                targetSection.classList.add('visible');
+                
                 const nav = document.querySelector('.nav');
                 const navHeight = nav ? nav.offsetHeight : 80;
                 const targetPosition = targetSection.offsetTop - navHeight;
@@ -23,7 +26,9 @@ navLinks.forEach(link => {
                 
                 // Close mobile menu if open
                 const navMenu = document.getElementById('navMenu');
-                navMenu.classList.remove('active');
+                if (navMenu) {
+                    navMenu.classList.remove('active');
+                }
             }
         }
     });
@@ -44,7 +49,6 @@ const servicesLink = document.querySelector('a[href="#servicos"]');
 const servicesDropdown = document.getElementById('servicesDropdown');
 
 if (servicesLink && servicesDropdown) {
-    // Mostra dropdown ao passar o mouse (desktop)
     const servicesItem = servicesLink.parentElement;
     
     if (servicesItem) {
