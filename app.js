@@ -12,7 +12,8 @@ navLinks.forEach(link => {
             const targetSection = document.getElementById(targetId);
             
             if (targetSection) {
-                const navHeight = document.querySelector('.nav').offsetHeight;
+                const nav = document.querySelector('.nav');
+                const navHeight = nav ? nav.offsetHeight : 80;
                 const targetPosition = targetSection.offsetTop - navHeight;
                 
                 window.scrollTo({
