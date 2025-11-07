@@ -6,13 +6,13 @@ navLinks.forEach(link => {
         const href = this.getAttribute('href');
         
         // Only handle smooth scroll for hash links
-        if (href.startsWith('#')) {
+        if (href && href.startsWith('#')) {
             e.preventDefault();
             const targetId = href.substring(1);
             const targetSection = document.getElementById(targetId);
             
             if (targetSection) {
-                // FORÇAR a seção a ficar visível ANTES de rolar
+                // Força a seção a ficar visível
                 targetSection.classList.add('visible');
                 
                 const nav = document.querySelector('.nav');
@@ -38,40 +38,11 @@ navLinks.forEach(link => {
 const navToggle = document.getElementById('navToggle');
 const navMenu = document.getElementById('navMenu');
 
-if (navToggle) {
+if (navToggle && navMenu) {
     navToggle.addEventListener('click', () => {
         navMenu.classList.toggle('active');
     });
 }
-
-// Dropdown menu functionality
-const servicesLink = document.querySelector('a[href="#servicos"]');
-const servicesDropdown = document.getElementById('servicesDropdown');
-
-if (servicesLink && servicesDropdown) {
-    const servicesItem = servicesLink.parentElement;
-    
-    if (servicesItem) {
-        servicesItem.addEventListener('mouseenter', function() {
-            if (window.innerWidth > 768) {
-                servicesDropdown.classList.add('active');
-            }
-        });
-        
-        servicesItem.addEventListener('mouseleave', function() {
-            if (window.innerWidth > 768) {
-                servicesDropdown.classList.remove('active');
-            }
-        });
-    }
-}
-
-// Fecha dropdown ao clicar fora
-document.addEventListener('click', function(e) {
-    if (servicesDropdown && !e.target.closest('.nav__item--dropdown')) {
-        servicesDropdown.classList.remove('active');
-    }
-});
 
 // Fade-in animation on scroll
 const sections = document.querySelectorAll('.section');
