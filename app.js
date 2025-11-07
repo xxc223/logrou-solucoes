@@ -44,16 +44,9 @@ const servicesLink = document.querySelector('a[href="#servicos"]');
 const servicesDropdown = document.getElementById('servicesDropdown');
 
 if (servicesLink && servicesDropdown) {
-    servicesLink.addEventListener('click', function(e) {
-        // Se clicar no link de serviços, alterna o dropdown
-        if (window.innerWidth > 768) {
-            e.preventDefault();
-            servicesDropdown.classList.toggle('active');
-        }
-    });
-    
     // Mostra dropdown ao passar o mouse (desktop)
     const servicesItem = servicesLink.parentElement;
+    
     if (servicesItem) {
         servicesItem.addEventListener('mouseenter', function() {
             if (window.innerWidth > 768) {
