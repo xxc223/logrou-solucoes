@@ -4,8 +4,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="Logrou Soluções - Perícia e investigação digital privada. Assistência técnica judicial, coleta de provas digitais, análise de fraudes e monitoramento de conteúdo para advogados e empresas.">
-    <meta name="keywords" content="perícia digital, investigação digital, prova digital, fake news, difamação online, análise forense digital, monitoramento digital, assistência técnica judicial">
+    <meta name="description" content="Logrou Soluções - Perícia e técnicas de investigação digital privada. Assistência técnica judicial, coleta de provas digitais, análise de fraudes e monitoramento de conteúdo para advogados e empresas.">
+    <meta name="keywords" content="perícia digital, técnicas de investigação digital, prova digital, fake news, difamação online, análise forense digital, monitoramento digital, assistência técnica judicial">
     <meta name="author" content="Logrou Soluções">
     
     <!-- Favicon -->
@@ -17,14 +17,14 @@
     <meta property="og:type" content="website">
     <meta property="og:url" content="https://logrousolucoes.com.br/">
     <meta property="og:title" content="Logrou Soluções - Provas Digitais, Tecnologia Forense">
-    <meta property="og:description" content="Perícia e investigação digital privada especializada. Atendemos advogados e empresas com soluções completas em análise forense digital e coleta de provas.">
+    <meta property="og:description" content="Perícia e técnicas de investigação digital privada especializada. Atendemos advogados e empresas com soluções completas em análise forense digital e coleta de provas.">
     <meta property="og:image" content="https://logrousolucoes.com.br/og-image.jpg">
     
     <!-- Twitter -->
     <meta property="twitter:card" content="summary_large_image">
     <meta property="twitter:url" content="https://logrousolucoes.com.br/">
     <meta property="twitter:title" content="Logrou Soluções - Provas Digitais, Tecnologia Forense">
-    <meta property="twitter:description" content="Perícia e investigação digital privada especializada. Atendemos advogados e empresas com soluções completas em análise forense digital e coleta de provas.">
+    <meta property="twitter:description" content="Perícia e técnicas de investigação digital privada especializada. Atendemos advogados e empresas com soluções completas em análise forense digital e coleta de provas.">
     <meta property="twitter:image" content="https://logrousolucoes.com.br/og-image.jpg">
     
     <!-- Schema.org JSON-LD -->
@@ -33,7 +33,7 @@
       "@context": "https://schema.org",
       "@type": "ProfessionalService",
       "name": "Logrou Soluções",
-      "description": "Perícia e investigação digital privada especializada em assistência técnica judicial, coleta de provas digitais e análise forense.",
+      "description": "Perícia e técnicas de investigação digital privada especializada em assistência técnica judicial, coleta de provas digitais e análise forense.",
       "url": "https://logrousolucoes.com.br",
       "telephone": "+55-XX-XXXX-XXXX",
       "address": {
@@ -558,45 +558,76 @@ body {
 }
 
 .team__content {
-    max-width: 800px;
-    margin: 0 auto;
-    text-align: center;
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
 }
 
-/* --- CORREÇÃO: mantém títulos centralizados mas força os cards e a bio --- */
-.team__content .team-member {
-    text-align: left; /* garante que conteúdo do card não herde center */
+.team-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 3rem;
+  margin-top: 2.5rem;
 }
 
-.team__content .member-photo {
-    display: block;
-    margin: 0 auto; /* mantém foto centralizada */
+.team-member {
+  display: grid;
+  grid-template-columns: minmax(260px, 1fr) minmax(0, 1.4fr);
+  gap: 2.5rem;
+  align-items: stretch;
 }
 
-.team__content .member-name,
-.team__content .member-role {
-    text-align: center; /* mantém nome e cargo centralizados */
+.member-photo-wrap {
+  position: relative;
+  width: 100%;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  box-shadow: 0 16px 40px rgba(0,0,0,0.18);
+  border: 6px solid rgba(0,123,255,0.12);
 }
 
-/* Member bio com moldura e destaque lateral */
+.member-photo {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 3 / 4;
+  object-fit: cover;
+  display: block;
+}
+
+.member-info {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  text-align: left;
+  gap: 0.75rem;
+}
+
+.member-name,
+.member-role {
+  text-align: left;
+  margin: 0;
+  font-size: 1.4rem; /* nome */
+}
+
+.member-role {
+  font-size: 1.1rem; /* cargo */
+}
+
 .team__content .member-bio {
-  display: block; /* já existia, mantém justify */
+  width: 100%;
+  background: var(--brand-secondary);
+  border: 2px solid var(--color-card-border);
+  border-radius: var(--radius-lg);
+  padding: 1rem 1.25rem 1.25rem;
+  box-shadow: var(--shadow-md);
+  position: relative;
   text-align: justify !important;
   text-justify: inter-word;
   text-align-last: left;
   line-height: 1.5;
-  margin-top: 1rem;
   color: var(--brand-text);
-
-  background: var(--brand-secondary);
-  border: 2px solid var(--color-card-border);
-  border-radius: var(--radius-lg);
-  padding: 1rem 1.25rem 1.25rem 1.25rem;
-  box-shadow: var(--shadow-md);
-  position: relative;
 }
 
-/* efeito de borda sutil e barra de acento à esquerda */
 .team__content .member-bio::before {
   content: '';
   position: absolute;
@@ -605,6 +636,7 @@ body {
   pointer-events: none;
   box-shadow: inset 0 0 0 1px rgba(0,123,255,0.07);
 }
+
 .team__content .member-bio::after {
   content: '';
   position: absolute;
@@ -617,15 +649,15 @@ body {
   opacity: 0.9;
 }
 
-/* Lista de tópicos como "pills" */
-.member-bio-topics {
+.team__content .member-bio-topics {
   list-style: none;
   padding: 0;
-  margin: 0 0 0.75rem 0;
+  margin: 0 0 0.75rem;
   display: grid;
   gap: 0.5rem;
 }
-.member-bio-topics li {
+
+.team__content .member-bio-topics li {
   background: rgba(0,123,255,0.06);
   border: 1px solid rgba(0,123,255,0.18);
   color: var(--brand-primary);
@@ -636,78 +668,45 @@ body {
   align-items: center;
   gap: 0.5rem;
 }
-.member-bio-topics li::before {
+
+.team__content .member-bio-topics li::before {
   content: '✓';
   color: var(--brand-accent);
   font-weight: 600;
   font-size: 0.95rem;
 }
-/* remove <br> manual dentro da lista */
-.member-bio-topics br { display: none; }
 
-/* Texto da bio dentro de um bloco moldurado */
-.member-bio-desc {
+.team__content .member-bio-desc {
   background: var(--brand-bg);
   border: 1px dashed var(--color-card-border);
   border-radius: var(--radius-md);
   padding: 0.75rem 1rem;
-  margin: 0.25rem 0 0 0;
+  margin: 0.25rem 0 0;
   box-shadow: var(--shadow-inset-sm);
 }
 
-/* New team grid for two experts */
-.team-grid {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 2rem;
-    margin-top: 2rem;
-    align-items: start;
-}
-
-/* aumente o círculo da foto dos peritos */
-.member-photo {
-    width: 300px;              /* maior no desktop */
-    height: 300px;
-    object-fit: cover;
-    border-radius: 10%;
-    margin: 0 auto 1rem;
-    border: 6px solid var(--brand-accent);
-    box-shadow: 0 12px 36px rgba(0,0,0,0.22);
-}
-
-/* Nome do membro */
-.member-name {
-    font-size: 1.25rem;
-    font-weight: var(--font-weight-semibold);
-    color: var(--brand-primary);
-    margin-top: 0.5rem;
-    margin-bottom: 0.25rem;
+/* responsivo */
+@media (max-width: 900px) {
+  .team-member {
+    grid-template-columns: 1fr;
+  }
+  .member-photo-wrap {
+    max-width: 340px;
+    margin: 0 auto;
+  }
+  .member-info {
+    align-items: center;
     text-align: center;
+  }
+  .member-bio {
+    text-align: left;
+  }
 }
 
-/* Função/role do membro — restaura o estilo anterior */
-.member-role {
-    font-size: 0.95rem;
-    font-weight: var(--font-weight-medium);
-    color: var(--brand-text);
-    opacity: 0.9;
-    text-align: center;
-    margin-bottom: 0.75rem;
-}
-
-/* tamanhos responsivos para manter layout */
-@media (max-width: 1024px) {
-    .member-photo { width: 260px; height: 260px; }
-    .team-grid { grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
-}
-
-@media (max-width: 768px) {
-    .member-photo { width: 220px; height: 220px; }
-    .team-grid { grid-template-columns: 1fr; }
-}
-
-@media (max-width: 480px) {
-    .member-photo { width: 160px; height: 160px; }
+@media (max-width: 560px) {
+  .member-photo-wrap {
+    max-width: 260px;
+  }
 }
 
 /* Contact Section */
@@ -1169,7 +1168,7 @@ body {
 
             <div class="hero__content">
                 <h1 class="hero__title">Provas Digitais, Tecnologia Forense</h1>
-                <p class="hero__subtitle">Proteja o que mais importa no mundo digital. Perícia forense, investigação de ameaças e coleta de provas com garantia de integridade e conformidade legal.</p>
+                <p class="hero__subtitle">Proteja o que mais importa no mundo digital. Perícia forense, rastreamento de ameaças e coleta de provas com garantia de integridade e conformidade legal.</p>
                 <a href="#contato" class="hero__cta">Solicitar Consultoria</a>
             </div>
         </section>
@@ -1243,36 +1242,44 @@ body {
                     <p class="team__text">Os profissionais da Logrou Soluções possuem formação especializada e atuação consolidada em perícias judiciais, consultorias privadas e assistências para empresas de diversos setores.</p>
 
                     <div class="team-grid">
-                        <div class="team-member">
-                            <img src="./assets/team/perito1.jpg" alt="Perito 1" class="member-photo">
-                            <h3 class="member-name">Daniel Logrado</h3>
-                            <div class="member-role">Perito Forense Digital — Expert em Análise de Evidências Judiciais</div>
-                            <div class="member-bio">
-                                <ul class="member-bio-topics">
-                                    <li>Perito Judicial (TJDFT)</li>
-                                    <li>Especialização em Forense Audiovisual e Cibernética</li>
-                                    <li>9 anos de atuação em perícias complexas</li>
-                                    <br>
-                                </ul>
-                                <p class="member-bio-desc">Perito Criminal formado pela Polícia Civil do Distrito Federal (PCDF) com sólido histórico em análise técnica de evidências digitais, validação de provas e cadeia de custódia para o judiciário brasileiro.</p>
-                            </div>
-                        </div>
+  <div class="team-member">
+    <div class="member-photo-wrap">
+      <img src="./assets/team/perito1.jpg" alt="Perito 1" class="member-photo">
+    </div>
+    <div class="member-info">
+      <h3 class="member-name">Daniel Logrado</h3>
+      <div class="member-role">Perito Forense Digital — Expert em Análise de Evidências Judiciais</div>
+      <div class="member-bio">
+        <ul class="member-bio-topics">
+          <li>Perito Criminal de formação</li>
+          <li>Especialização em Forense Audiovisual e Cibernética</li>
+          <li>Perito Judicial peo TJDFT</li>
+        </ul>
+        <p class="member-bio-desc">Perito Criminal formado pela Polícia Civil do Distrito Federal (PCDF), com trajetória de 9 anos como perito judicial credenciado junto ao Tribunal de Justiça do Distrito Federal e Territórios (TJDFT). Sua formação especializada em Forense Audiovisual e Cibernética o capacita para análises técnicas de alto rigor científico, fundamentais para processos que exigem provas digitais irrefutáveis. </p>
+        <p class="member-bio-desc"> Com histórico comprovado em análise técnica de evidências digitais complexas, atua em casos de repercussão envolvendo fake news, difamação, crimes contra a honra e fraudes digitais. Domina procedimentos críticos como validação de provas digitais, preservação de cadeia de custódia e produção de laudos periciais que atendem aos mais padrões do judiciário brasileiro. Sua expertise abrange desde a análise forense de vídeos e áudios até a validação de autenticidade de materiais digitais, utilizando metodologias reconhecidas internacionalmente.</p>
+      </div>
+    </div>
+  </div>
 
-                    <div class="team-member">
-                        <img src="./assets/team/perito2.jpg" alt="Perito 2" class="member-photo">
-                        <h3 class="member-name">Rafael Duclou</h3>
-                        <div class="member-role">Especialista - Inteligência e Análise Cibernética</div>
-                        <div class="member-bio">
-                            <ul class="member-bio-topics">
-                                <li>Formação em Engenharia (NYIT / UFMG)</li>
-                                <li>Experiência operacional na PRF</li>
-                                <li>Especialista em inteligência e análise cibernética</li>
-                                <br>
-                            </ul>
-                            <p class="member-bio-desc">Profissional multidisciplinar com formação internacional e experiência em investigação e análise de evidências digitais, aplicando técnicas de rastreamento e análise em casos cibernéticos.</p>
-                        </div>
-                    </div>
-                    </div>
+  <div class="team-member">
+    <div class="member-photo-wrap">
+      <img src="./assets/team/perito2.jpg" alt="Perito 2" class="member-photo">
+    </div>
+    <div class="member-info">
+      <h3 class="member-name">Rafael Duclou</h3>
+      <div class="member-role">Perito Computacional — Inteligência e Análise Cibernética</div>
+      <div class="member-bio">
+        <ul class="member-bio-topics">
+          <li>Formação em Engenharia (NYIT/UFMG)</li>
+          <li>Expertise em análise de evidências digitais</li>
+          <li>Especialista em técnicas de Open Source Intelligence</li>
+        </ul>
+        <p class="member-bio-desc">Profissional multidisciplinar com formação internacional, graduado em Engenharia pelo New York Institute of Technology (NYIT) e pela Universidade Federal de Minas Gerais (UFMG), consolidando sua expertise técnica com o Curso de Ciência da Computação pela Universidade de Harvard.</p>
+        <p class="member-bio-desc">Soma 4 anos de experiência operacional na Polícia Rodoviária Federal (PRF), onde desenvolveu habilidades críticas em trabalho de campo, análise de evidências e inteligência policial. Especialista em Inteligência e Análise Cibernética com pós-graduação focada em técnicas de rastreamento digital e OSINT (Open Source Intelligence). Aplica metodologias de análise forense digital, possibilitando a descoberta da autoria de conteúdos maliciosos e o mapeamento redes de atuação digital.</p>
+      </div>
+    </div>
+  </div>
+</div>
                 </div>
             </div>
         </section>
@@ -1404,7 +1411,7 @@ body {
                     <li class="benefits-list__item">
                     <span class="benefits-list__icon" aria-hidden="true" style="color:#E1306C;">
                         <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Instagram">
-                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.17.056 1.97.24 2.428.403a4.92 4.92 0 0 1 1.78 1.153 4.92 4.92 0 0 1 1.153 1.78c.163.458.347 1.258.403 2.428.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.056 1.17-.24 1.97-.403 2.428a4.92 4.92 0 0 1-1.153 1.78 4.92 4.92 0 0 1-1.78 1.153c-.458.163-1.258.347-2.428.403-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.17-.056-1.97-.24-2.428-.403a4.92 4.92 0 0 1-1.78-1.153 4.92 4.92 0 0 1-1.153-1.78c-.163-.458-.347-1.258-.403-2.428C2.175 15.584 2.163 15.204 2.163 12s.012-3.584.07-4.85c.056-1.17.24-1.97.403-2.428a4.92 4.92 0 0 1 1.153-1.78 4.92 4.92 0 0 1 1.78-1.153c.458-.163 1.258-.347 2.428-.403C8.416 2.175 8.796 2.163 12 2.163Zm0 1.684c-3.15 0-3.522.012-4.764.069-.99.045-1.525.21-1.88.349-.474.183-.81.401-1.164.755-.354.354-.572.69-.755 1.164-.139.355-.304.89-.349 1.88-.057 1.242-.069 1.614-.069 4.764s.012 3.522.069 4.764c.045.99.21 1.525.349 1.88.183.474.401.81.755 1.164.354.354.69.572 1.164.755.355.139.89.304 1.88.349 1.242.057 1.614.069 4.764.069s3.522-.012 4.764-.069c.99-.045 1.525-.21 1.88-.349.474-.183.81-.401 1.164-.755.354-.354.572-.69.755-1.164.139-.355.304-.89.349-1.88.057-1.242.069-1.614.069-4.764s-.012-3.522-.069-4.764c-.045-.99-.21-1.525-.349-1.88-.183-.474-.401-.81-.755-1.164a2.87 2.87 0 0 0-1.164-.755c-.355-.139-.89-.304-1.88-.349-1.242-.057-1.614-.069-4.764-.069Zm0 3.404a4.75 4.75 0 1 1 0 9.5 4.75 4.75 0 0 1 0-9.5Zm0 1.684a3.066 3.066 0 1 0 0 6.132 3.066 3.066 0 0 0 0-6.132Zm5.996-2.611a1.11 1.11 0 1 1-2.22 0 1.11 1.11 0 0 1 2.22 0Z"/>
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.17.056 1.97.24 2.428.403a4.92 4.92 0 0 1 1.78 1.153 4.92 4.92 0 0 1 1.153 1.78c.163.458.347 1.258.403 2.428.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.056 1.17-.24 1.97-.403 2.428a4.92 4.92 0 0 1-1.153 1.78 4.92 4.92 0 0 1-1.78 1.153c-.458.163-1.258.347-2.428.403-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-.99-.045-1.525-.21-1.88-.349-.474.183-.81.401-1.164.755-.354.354-.572.69-.755 1.164-.139.355-.304.89-.349 1.88-.057 1.242-.069 1.614-.069 4.764s.012 3.522.069 4.764c.045.99.21 1.525.349 1.88.183.474.401.81.755 1.164.354.354.69.572 1.164.755.355.139.89.304 1.88.349 1.242.057 1.614.069 4.764.069s3.522-.012 4.764-.069c.99-.045 1.525-.21 1.88-.349.474-.183.81-.401 1.164-.755.354-.354.572-.69.755-1.164.139-.355.304-.89.349-1.88.057-1.242.069-1.614.069-4.764s-.012-3.522-.069-4.764c-.045-.99-.21-1.525-.349-1.88-.183-.474-.401-.81-.755-1.164a2.87 2.87 0 0 0-1.164-.755c-.355-.139-.89-.304-1.88-.349-1.242-.057-1.614-.069-4.764-.069Zm0 1.684c-3.15 0-3.522.012-4.764.069-.99.045-1.525.21-1.88.349-.474.183-.81.401-1.164.755-.354.354-.572.69-.755 1.164-.139.355-.304.89-.349 1.88-.057 1.242-.069 1.614-.069 4.764s.012 3.522.069 4.764c.045.99.21 1.525.349 1.88.183.474.401.81.755 1.164.354.354.69.572 1.164.755.355.139.89.304 1.88.349 1.242.057 1.614.069 4.764.069s3.522-.012 4.764-.069c.99-.045 1.525-.21 1.88-.349.474-.183.81-.401 1.164-.755.354-.354.572-.69.755-1.164.139-.355.304-.89.349-1.88.057-1.242.069-1.614.069-4.764s-.012-3.522-.069-4.764c-.045-.99-.21-1.525-.349-1.88-.183-.474-.401-.81-.755-1.164a2.87 2.87 0 0 0-1.164-.755c-.355-.139-.89-.304-1.88-.349-1.242-.057-1.614-.069-4.764-.069Zm0 3.404a4.75 4.75 0 1 1 0 9.5 4.75 4.75 0 0 1 0-9.5Zm0 1.684a3.066 3.066 0 1 0 0 6.132 3.066 3.066 0 0 0 0-6.132Zm5.996-2.611a1.11 1.11 0 1 1-2.22 0 1.11 1.11 0 0 1 2.22 0Z"/>
                         </svg>
                     </span>
                     <span>Comentários no Instagram</span>
@@ -1430,7 +1437,7 @@ body {
             <div class="service-content__section">
                 <h3 class="service-content__heading">Casos de Uso</h3>
                 <p class="service-content__desc">
-                    Ideal para advogados e empresas que precisam coletar e preservar evidências digitais com total segurança jurídica. Nossa metodologia garante a cadeia de custódia digital, assegurando que as provas coletadas sejam aceitas em processos judiciais sem questionamentos sobre sua autenticidade.
+                    Ideal para advogados, empresas e terceiros que precisam coletar e preservar evidências digitais com total segurança jurídica. Nossa metodologia garante a cadeia de custódia digital, assegurando que as provas coletadas sejam aceitas em processos judiciais sem questionamentos sobre sua autenticidade.
                 </p>
             </div>
             
