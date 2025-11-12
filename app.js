@@ -168,3 +168,19 @@ window.addEventListener('load', () => {
         }
     }
 });
+
+function navigateToSection(sectionId, event) {
+    if (event && typeof event.preventDefault === 'function') event.preventDefault();
+    showHome(); // volta para a homepage
+    setTimeout(() => {
+        const targetElement = document.getElementById(sectionId);
+        if (targetElement) {
+            targetElement.classList.add('visible');
+            const navEl = document.querySelector('.nav');
+            const navHeight = navEl ? navEl.offsetHeight : 0;
+            const targetPosition = targetElement.offsetTop - navHeight;
+            window.scrollTo({ top: targetPosition, behavior: 'smooth' });
+        }
+    }, 50); // pequeno delay para garantir que a homepage foi exibida
+    try { history.pushState(null, '', `#${sectionId}`); } catch (e) {}
+}

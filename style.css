@@ -65,14 +65,6 @@
   --color-focus-ring: rgba(var(--color-teal-500-rgb), 0.4);
   --color-select-caret: rgba(var(--color-slate-900-rgb), 0.8);
 
-  /* Common style patterns */
-  --focus-ring: 0 0 0 3px var(--color-focus-ring);
-  --focus-outline: 2px solid var(--color-primary);
-  --status-bg-opacity: 0.15;
-  --status-border-opacity: 0.25;
-  --select-caret-light: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23134252' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
-  --select-caret-dark: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23f5f5f5' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'%3E%3C/polyline%3E%3C/svg%3E");
-
   /* RGB versions for opacity control */
   --color-success-rgb: 33, 128, 141;
   --color-error-rgb: 192, 21, 47;
@@ -142,6 +134,13 @@
   --container-md: 768px;
   --container-lg: 1024px;
   --container-xl: 1280px;
+  
+  /* Custom colors for Logrou Soluções */
+  --brand-primary: #17313e;
+  --brand-secondary: #ffffff;
+  --brand-accent: #007bff;
+  --brand-bg: #f8f9fa;
+  --brand-text: #2c3e50;
 }
 
 /* Dark mode colors */
@@ -731,13 +730,6 @@ select.form-control {
   border: 1px solid var(--color-border-secondary);
 }
 
-@font-face {
-  font-family: 'FKGroteskNeue';
-  src: url('https://r2cdn.perplexity.ai/fonts/FKGroteskNeue.woff2')
-    format('woff2');
-}
-
-/* END PERPLEXITY DESIGN SYSTEM */
 /* Reset and Base Styles */
 * {
     margin: 0;
@@ -1524,6 +1516,11 @@ h1, h2, h3, h4, h5, h6 {
     .service-navigation {
         flex-direction: column;
     }
+
+    /* ajusta nav em telas pequenas para evitar quebra */
+    .nav__link {
+        font-size: 1rem;
+    }
 }
 
 @media (max-width: 480px) {
@@ -1613,4 +1610,160 @@ h1, h2, h3, h4, h5, h6 {
     .nav__dropdown-link {
         padding-left: 3rem;
     }
+}
+
+/* Navigation */
+.nav__logo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    flex-shrink: 0;
+}
+
+.nav__logo-img {
+    width: 40px;
+    height: 40px;
+    object-fit: contain;
+    border-radius: 50%;
+}
+
+.nav__company-name {
+    font-size: 1.1rem;
+    font-weight: var(--font-weight-bold);
+    color: var(--brand-primary);
+    white-space: nowrap;
+}
+
+@media (max-width: 768px) {
+    .nav__logo-img {
+        width: 35px;
+        height: 35px;
+    }
+
+    .nav__company-name {
+        font-size: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .nav__logo-wrapper {
+        gap: 8px;
+    }
+
+    .nav__logo-img {
+        width: 30px;
+        height: 30px;
+    }
+
+    .nav__company-name {
+        font-size: 0.95rem;
+    }
+}
+
+.nav__logo-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex-shrink: 0;
+}
+
+/* Team member photos */
+.team-grid {
+    display: grid;
+    /* permitir colunas maiores para acomodar fotos maiores */
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.5rem;
+    align-items: start;
+}
+
+.team-member {
+    text-align: left; /* mantém nome e cargo */
+}
+
+.member-photo {
+    width: 220px;              /* maior: desktop */
+    height: 220px;
+    object-fit: cover;
+    border-radius: 50%;
+    display: inline-block;
+    box-shadow: 0 8px 28px rgba(0,0,0,0.18);
+    border: 3px solid rgba(255,255,255,0.06);
+}
+
+/* tamanhos responsivos */
+@media (max-width: 1024px) {
+    .member-photo { width: 200px; height: 200px; }
+    .team-grid { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
+}
+
+@media (max-width: 768px) {
+    .member-photo { width: 160px; height: 160px; }
+    .team-grid { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); }
+}
+
+@media (max-width: 480px) {
+    .member-photo { width: 120px; height: 120px; }
+    .team-grid { grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); }
+}
+
+/* Member bio: truncamento com "Leia mais" */
+.member-bio-wrapper {
+    text-align: left; /* mantém nome centralizado, bio alinhada à esquerda para leitura */
+}
+
+.member-bio {
+    text-align: justify !important;
+    text-justify: inter-word;       /* melhora a distribuição das palavras */
+    text-align-last: left;          /* evita última linha centralizada */
+    line-height: 1.5;
+    margin-top: 0.5rem;
+    color: var(--brand-text);
+}
+
+/* Member bio — tópicos + descrição justificada */
+.team__content .member-bio {
+    display: block;
+    text-align: left; /* container alinhado à esquerda para os tópicos */
+    margin-top: 0.5rem;
+    color: var(--brand-text);
+}
+
+/* tópicos (lista curta) */
+.team__content .member-bio-topics {
+    list-style: disc;
+    margin: 0 0 0.5rem 1.25rem;
+    padding: 0;
+    color: var(--brand-text);
+    font-weight: var(--font-weight-medium);
+    font-size: 0.95rem;
+}
+
+.team__content .member-bio-topics li {
+    margin-bottom: 0.25rem;
+    line-height: 1.4;
+}
+
+/* descrição — texto justificado */
+.team__content .member-bio-desc {
+    margin: 0;
+    line-height: 1.5;
+    font-size: 0.98rem;
+    text-align: justify;           /* justifica o bloco de texto */
+    text-justify: inter-word;
+    text-align-last: left;         /* evita última linha centralizada */
+    color: var(--brand-text);
+}
+
+/* se existir toggle (Leia mais), mantê-lo visualmente consistente */
+.bio-toggle {
+    display: inline-block;
+    margin-top: 0.5rem;
+    background: none;
+    border: none;
+    color: var(--brand-accent);
+    font-weight: var(--font-weight-semibold);
+    cursor: pointer;
+    padding: 0;
 }
