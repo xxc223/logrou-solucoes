@@ -1682,32 +1682,6 @@ h1, h2, h3, h4, h5, h6 {
     text-align: left; /* mantém nome e cargo */
 }
 
-.member-photo {
-    width: 220px;              /* maior: desktop */
-    height: 220px;
-    object-fit: cover;
-    border-radius: 50%;
-    display: inline-block;
-    box-shadow: 0 8px 28px rgba(0,0,0,0.18);
-    border: 3px solid rgba(255,255,255,0.06);
-}
-
-/* tamanhos responsivos */
-@media (max-width: 1024px) {
-    .member-photo { width: 200px; height: 200px; }
-    .team-grid { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); }
-}
-
-@media (max-width: 768px) {
-    .member-photo { width: 160px; height: 160px; }
-    .team-grid { grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); }
-}
-
-@media (max-width: 480px) {
-    .member-photo { width: 120px; height: 120px; }
-    .team-grid { grid-template-columns: repeat(auto-fit, minmax(120px, 1fr)); }
-}
-
 /* Member bio: truncamento com "Leia mais" */
 .member-bio-wrapper {
     text-align: left; /* mantém nome centralizado, bio alinhada à esquerda para leitura */

@@ -11,6 +11,7 @@
     <!-- Favicon -->
     <link rel="icon" type="image/png" href="./assets/favicon.png">
     <link rel="shortcut icon" href="./assets/favicon.ico">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-..." crossorigin="anonymous" referrerpolicy="no-referrer" />
     
     <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
@@ -668,7 +669,7 @@ body {
     width: 300px;              /* maior no desktop */
     height: 300px;
     object-fit: cover;
-    border-radius: 50%;
+    border-radius: 10%;
     margin: 0 auto 1rem;
     border: 6px solid var(--brand-accent);
     box-shadow: 0 12px 36px rgba(0,0,0,0.22);
@@ -945,9 +946,22 @@ body {
 }
 
 .benefits-list__icon {
-    color: var(--brand-accent);
-    font-size: 1.25rem;
-    flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 36px;
+  height: 36px;
+  flex-shrink: 0;
+  font-size: 1.25rem;
+  color: var(--brand-accent); /* fallback color; inline style on element overrides */
+}
+
+.benefits-list__icon svg {
+  width: 20px;
+  height: 20px;
+  display: block;
+  fill: currentColor; /* garante que o SVG use a cor do elemento pai */
+  color: inherit;
 }
 
 .service-nav {
@@ -1206,7 +1220,7 @@ body {
                     
                     <a href="#servico-3" class="service-card" onclick="showService(3, event)">
                         <img src="https://user-gen-media-assets.s3.amazonaws.com/seedream_images/08966cce-8adb-4f5e-931e-f1cdd9601830.png" alt="Análise de Autenticidade" class="service-card__icon">
-                        <h3 class="service-card__title">Análise de Autenticidade e Fraude</h3>
+                        <h3 class="service-card__title">Análise de Fraude e Busca Ativa</h3>
                         <p class="service-card__desc">Verificação de vídeos, fotos, mensagens e análise de manipulações</p>
                         <span class="service-card__link">Saiba mais →</span>
                     </a>
@@ -1288,11 +1302,17 @@ body {
                         </div>
 
                         <div class="contact-info__item">
-                            <div class="contact-info__icon">💬</div>
-                            <div class="contact-info__details">
-                                <div class="contact-info__label">WhatsApp</div>
-                                <a href="https://wa.me/[PLACEHOLDER_WHATSAPP]" class="contact-info__link" target="_blank">[PLACEHOLDER_WHATSAPP]</a>
-                            </div>
+                        <div class="contact-info__icon" aria-hidden="true" style="color:#25D366;">
+                            <!-- WhatsApp Official SVG Icon -->
+                            <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="WhatsApp">
+                            <path fill-rule="evenodd" clip-rule="evenodd" d="M16 0C7.163 0 0 7.163 0 16c0 2.825.74 5.478 2.037 7.765L0 32l8.408-2.005A15.938 15.938 0 0016 32c8.837 0 16-7.163 16-16S24.837 0 16 0zm0 29.333c-2.347 0-4.613-.613-6.613-1.773l-.474-.287-4.92 1.173 1.173-4.893-.3-.493A13.267 13.267 0 012.667 16c0-7.36 5.973-13.333 13.333-13.333S29.333 8.64 29.333 16 23.36 29.333 16 29.333z" fill="currentColor"/>
+                            <path d="M12.267 9.6c-.267-.593-.547-.6-.8-.607-.207-.006-.44-.006-.674-.006-.233 0-.613.087-.933.433-.32.347-1.22 1.193-1.22 2.907s1.247 3.373 1.42 3.607c.174.233 2.434 3.72 5.894 5.213 2.873 1.24 3.46 1 4.086.94.627-.06 2.02-.827 2.307-1.627.286-.8.286-1.486.2-1.627-.087-.14-.32-.227-.667-.4-.346-.173-2.046-1.013-2.366-1.126-.32-.114-.553-.174-.787.173-.233.347-.906 1.127-1.113 1.36-.206.234-.413.267-.76.094-.346-.173-1.46-.54-2.78-1.714-1.027-.914-1.72-2.046-1.927-2.393-.206-.347-.02-.533.154-.707.153-.16.346-.413.52-.62.173-.206.233-.346.346-.573.114-.227.06-.427-.027-.6-.086-.174-.786-1.894-1.08-2.594z" fill="currentColor"/>
+                            </svg>
+                        </div>
+                        <div class="contact-info__details">
+                            <div class="contact-info__label">WhatsApp</div>
+                            <a href="https://wa.me/[PLACEHOLDER_WHATSAPP]" class="contact-info__link" target="_blank" rel="noopener">[PLACEHOLDER_WHATSAPP]</a>
+                        </div>
                         </div>
 
                         <!-- Horário de atendimento -->
@@ -1323,23 +1343,19 @@ body {
             </p>
             
             <div class="service-content__section">
-                <h3 class="service-content__heading">Benefícios</h3>
+                <h3 class="service-content__heading">Aplicações</h3>
                 <ul class="benefits-list">
                     <li class="benefits-list__item">
                         <span class="benefits-list__icon">✓</span>
                         <span>Perícia rápida e confiável</span>
                     </li>
                     <li class="benefits-list__item">
-                        <span class="benefits-list__icon">✓</span>
-                        <span>Pareceres técnicos robustos</span>
+                        <span class="benefits-list__icon"><i class="fa-solid fa-photo-film"></i></i></span>
+                        <span>Vídeos, imagens e documentos analisados</span>
                     </li>
                     <li class="benefits-list__item">
-                        <span class="benefits-list__icon">✓</span>
+                        <span class="benefits-list__icon"><i class="fa-solid fa-gavel"></i></span>
                         <span>Compatível com processos judiciais</span>
-                    </li>
-                    <li class="benefits-list__item">
-                        <span class="benefits-list__icon">✓</span>
-                        <span>Monitoramento automatizado</span>
                     </li>
                 </ul>
             </div>
@@ -1371,7 +1387,7 @@ body {
             </p>
             
             <div class="service-content__section">
-                <h3 class="service-content__heading">Benefícios</h3>
+                <h3 class="service-content__heading">Aplicações</h3>
                 <ul class="benefits-list">
                     <li class="benefits-list__item">
                         <span class="benefits-list__icon">✓</span>
@@ -1382,12 +1398,31 @@ body {
                         <span>Integridade garantida</span>
                     </li>
                     <li class="benefits-list__item">
-                        <span class="benefits-list__icon">✓</span>
+                        <span class="benefits-list__icon"><i class="fa-solid fa-shuffle"></i></span>
                         <span>Rastreabilidade completa</span>
                     </li>
                     <li class="benefits-list__item">
-                        <span class="benefits-list__icon">✓</span>
-                        <span>Validade jurídica assegurada</span>
+                    <span class="benefits-list__icon" aria-hidden="true" style="color:#E1306C;">
+                        <svg viewBox="0 0 24 24" fill="currentColor" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Instagram">
+                            <path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.17.056 1.97.24 2.428.403a4.92 4.92 0 0 1 1.78 1.153 4.92 4.92 0 0 1 1.153 1.78c.163.458.347 1.258.403 2.428.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.056 1.17-.24 1.97-.403 2.428a4.92 4.92 0 0 1-1.153 1.78 4.92 4.92 0 0 1-1.78 1.153c-.458.163-1.258.347-2.428.403-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.17-.056-1.97-.24-2.428-.403a4.92 4.92 0 0 1-1.78-1.153 4.92 4.92 0 0 1-1.153-1.78c-.163-.458-.347-1.258-.403-2.428C2.175 15.584 2.163 15.204 2.163 12s.012-3.584.07-4.85c.056-1.17.24-1.97.403-2.428a4.92 4.92 0 0 1 1.153-1.78 4.92 4.92 0 0 1 1.78-1.153c.458-.163 1.258-.347 2.428-.403C8.416 2.175 8.796 2.163 12 2.163Zm0 1.684c-3.15 0-3.522.012-4.764.069-.99.045-1.525.21-1.88.349-.474.183-.81.401-1.164.755-.354.354-.572.69-.755 1.164-.139.355-.304.89-.349 1.88-.057 1.242-.069 1.614-.069 4.764s.012 3.522.069 4.764c.045.99.21 1.525.349 1.88.183.474.401.81.755 1.164.354.354.69.572 1.164.755.355.139.89.304 1.88.349 1.242.057 1.614.069 4.764.069s3.522-.012 4.764-.069c.99-.045 1.525-.21 1.88-.349.474-.183.81-.401 1.164-.755.354-.354.572-.69.755-1.164.139-.355.304-.89.349-1.88.057-1.242.069-1.614.069-4.764s-.012-3.522-.069-4.764c-.045-.99-.21-1.525-.349-1.88-.183-.474-.401-.81-.755-1.164a2.87 2.87 0 0 0-1.164-.755c-.355-.139-.89-.304-1.88-.349-1.242-.057-1.614-.069-4.764-.069Zm0 3.404a4.75 4.75 0 1 1 0 9.5 4.75 4.75 0 0 1 0-9.5Zm0 1.684a3.066 3.066 0 1 0 0 6.132 3.066 3.066 0 0 0 0-6.132Zm5.996-2.611a1.11 1.11 0 1 1-2.22 0 1.11 1.11 0 0 1 2.22 0Z"/>
+                        </svg>
+                    </span>
+                    <span>Comentários no Instagram</span>
+                    </li>
+
+                    <li class="benefits-list__item">
+                    <span class="benefits-list__icon" aria-hidden="true" style="color:#25D366;">
+                        <!-- WhatsApp Official SVG Icon -->
+                        <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="WhatsApp">
+                        <path fill-rule="evenodd" clip-rule="evenodd" d="M16 0C7.163 0 0 7.163 0 16c0 2.825.74 5.478 2.037 7.765L0 32l8.408-2.005A15.938 15.938 0 0016 32c8.837 0 16-7.163 16-16S24.837 0 16 0zm0 29.333c-2.347 0-4.613-.613-6.613-1.773l-.474-.287-4.92 1.173 1.173-4.893-.3-.493A13.267 13.267 0 012.667 16c0-7.36 5.973-13.333 13.333-13.333S29.333 8.64 29.333 16 23.36 29.333 16 29.333z" fill="currentColor"/>
+                        <path d="M12.267 9.6c-.267-.593-.547-.6-.8-.607-.207-.006-.44-.006-.674-.006-.233 0-.613.087-.933.433-.32.347-1.22 1.193-1.22 2.907s1.247 3.373 1.42 3.607c.174.233 2.434 3.72 5.894 5.213 2.873 1.24 3.46 1 4.086.94.627-.06 2.02-.827 2.307-1.627.286-.8.286-1.486.2-1.627-.087-.14-.32-.227-.667-.4-.346-.173-2.046-1.013-2.366-1.126-.32-.114-.553-.174-.787.173-.233.347-.906 1.127-1.113 1.36-.206.234-.413.267-.76.094-.346-.173-1.46-.54-2.78-1.714-1.027-.914-1.72-2.046-1.927-2.393-.206-.347-.02-.533.154-.707.153-.16.346-.413.52-.62.173-.206.233-.346.346-.573.114-.227.06-.427-.027-.6-.086-.174-.786-1.894-1.08-2.594z" fill="currentColor"/>
+                        </svg>
+                    </span>
+                    <span>Conversas de WhatsApp</span>
+                    </li>
+                        <li class="benefits-list__item">
+                        <span class="benefits-list__icon"><i class="fa-solid fa-file"></i></span>
+                        <span>Sites diversos</span>
                     </li>
                 </ul>
             </div>
@@ -1408,7 +1443,7 @@ body {
 
     <div id="service-3" class="service-detail">
         <div class="service-hero service-hero--3">
-            <h1 class="service-hero__title">Análise de Autenticidade e Fraude</h1>
+            <h1 class="service-hero__title">Análise de Fraude e Busca Ativa</h1>
         </div>
         
         <div class="service-content">
@@ -1419,23 +1454,27 @@ body {
             </p>
             
             <div class="service-content__section">
-                <h3 class="service-content__heading">Benefícios</h3>
+                <h3 class="service-content__heading">Aplicações</h3>
                 <ul class="benefits-list">
                     <li class="benefits-list__item">
                         <span class="benefits-list__icon">✓</span>
-                        <span>Detecção de manipulações</span>
+                        <span>Diligências digitais</span>
                     </li>
                     <li class="benefits-list__item">
-                        <span class="benefits-list__icon">✓</span>
-                        <span>Validação de autenticidade</span>
+                        <span class="benefits-list__icon"><i class="fa-solid fa-video"></i></span>
+                        <span>Vídeos</span>
                     </li>
                     <li class="benefits-list__item">
-                        <span class="benefits-list__icon">✓</span>
-                        <span>Análise forense avançada</span>
+                        <span class="benefits-list__icon"><i class="fa-solid fa-images"></i></span>
+                        <span>Imagens</span>
                     </li>
                     <li class="benefits-list__item">
-                        <span class="benefits-list__icon">✓</span>
-                        <span>Relatórios periciais completos</span>
+                        <span class="benefits-list__icon"><i class="fa-solid fa-file-lines"></i></span>
+                        <span>Documentos</span>
+                    </li>
+                        <li class="benefits-list__item">
+                        <span class="benefits-list__icon"><i class="fa-solid fa-magnifying-glass"></i></span>
+                        <span>Busca por autores e responsáveis</span>
                     </li>
                 </ul>
             </div>
@@ -1467,22 +1506,18 @@ body {
             </p>
             
             <div class="service-content__section">
-                <h3 class="service-content__heading">Benefícios</h3>
+                <h3 class="service-content__heading">Aplicações</h3>
                 <ul class="benefits-list">
-                    <li class="benefits-list__item">
-                        <span class="benefits-list__icon">✓</span>
-                        <span>Monitoramento 24/7</span>
-                    </li>
                     <li class="benefits-list__item">
                         <span class="benefits-list__icon">✓</span>
                         <span>Alertas em tempo real</span>
                     </li>
                     <li class="benefits-list__item">
-                        <span class="benefits-list__icon">✓</span>
+                        <span class="benefits-list__icon"><i class="fa-solid fa-magnifying-glass"></i></span>
                         <span>Rastreamento de responsáveis</span>
                     </li>
                     <li class="benefits-list__item">
-                        <span class="benefits-list__icon">✓</span>
+                        <span class="benefits-list__icon"><i class="fa-solid fa-shield-halved"></i></span>
                         <span>Proteção de imagem corporativa</span>
                     </li>
                 </ul>
